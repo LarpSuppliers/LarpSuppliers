@@ -1,0 +1,17 @@
+{
+  "name": "dropship-store",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dropshipping storefront with Stripe Checkout and a private owner dashboard for manual supplier ordering.",
+  "main": "server.js",
+  "engines": { "node": ">=22.13" },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning server.js",
+    "dev": "node --disable-warning=ExperimentalWarning --watch server.js",
+    "seed": "node --disable-warning=ExperimentalWarning scripts/seed.js",
+    "create-admin": "node --disable-warning=ExperimentalWarning scripts/create-admin.js",
+    "remove-admin": "node --disable-warning=ExperimentalWarning scripts/remove-admin.js",
+    "test": "node --disable-warning=ExperimentalWarning --test test/e2e.test.js"
+  },
+  "license": "UNLICENSED"
+}
