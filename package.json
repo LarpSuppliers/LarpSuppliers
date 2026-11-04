@@ -13,5 +13,8 @@
     "remove-admin": "node --disable-warning=ExperimentalWarning scripts/remove-admin.js",
     "test": "node --disable-warning=ExperimentalWarning --test test/e2e.test.js"
   },
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "dependencies": {
+    "libsql": "^0.5.29"
+  }
 }
