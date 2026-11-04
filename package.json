@@ -15,6 +15,6 @@
   },
   "license": "UNLICENSED",
   "dependencies": {
-    "libsql": "^0.5.29"
+"@libsql/client": "^0.18.0"
   }
 }
