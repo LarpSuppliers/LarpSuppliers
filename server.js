@@ -9,7 +9,26 @@ const { hashPassword } = require('./lib/auth');
 const { isEmail } = require('./lib/util');
 const { getSettings } = require('./lib/db');
 const views = require('./views/store');
+// Create the first owner account if one does not exist.
+if (process.env.ADMIN_EMAIL && process.env.ADMIN_PASSWORD) {
+  const email = process.env.ADMIN_EMAIL.trim();
+  const name = process.env.ADMIN_NAME?.trim() || email.split('@')[0];
+  const password = process.env.ADMIN_PASSWORD;
 
+  if (!isEmail(email) || password.length < 10) {
+    throw new Error('Invalid admin setup environment variables.');
+  }
+
+  if (!one('SELECT id FROM admins LIMIT 1')) {
+    run(
+      'INSERT INTO admins (email, name, password_hash) VALUES (?, ?, ?)',
+      email,
+      name,
+      hashPassword(password)
+    );
+    console.log('Initial owner account created.');
+  }
+}
 const router = new Router();
 require('./routes/store')(router);
 require('./routes/admin')(router);
