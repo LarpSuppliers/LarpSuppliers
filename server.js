@@ -4,7 +4,9 @@ const path = require('node:path');
 const fs = require('node:fs');
 const config = require('./lib/config');
 const { Router, serveStatic, enhance } = require('./lib/http');
-const { run } = require('./lib/db');
+const { run, one } = require('./lib/db');
+const { hashPassword } = require('./lib/auth');
+const { isEmail } = require('./lib/util');
 const { getSettings } = require('./lib/db');
 const views = require('./views/store');
 
